@@ -23,3 +23,8 @@ $("#zipButton").on("click", function () {
         console.log("That is a valid Zip Code");
     }
 });
+
+$(document).ready(function () {
+    $('.datepicker').datepicker()
+});
+
