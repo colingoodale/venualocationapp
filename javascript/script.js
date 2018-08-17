@@ -18,18 +18,20 @@ function isZip(zip) {
 
 $("#submit").on("click", function () {
     var zipCode = $("#zipBox").val();
+    // alert("hello")
     if (isZip(zipCode)) {
         // Do search function
         console.log("That is a valid Zip Code");
-        card = $("<button>");
-        card.text("Hello!");
+        var card = $("<div>").addClass("card blue-grey darken-1");
+        var cardContent = $("<div>").addClass("card-content white-text");
+        card.append(cardContent);
         $("#cardContainer").append(card);
 
+    } else {
+        alert("Go Fuck Yourself");
     }
 });
-// $("#submit").on("click", function () {
 
-// });
 
 $(document).ready(function () {
     $('.datepicker').datepicker()
