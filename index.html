@@ -14,7 +14,8 @@
 <body>
     <nav bar id="nav">
         <div class="row">
-            <h4 class="center-align col m12">CHI-vents</h1>
+            <h4 class="center-align col m12">CHI-vents
+                </h1>
                 <!-- <div class="left-align col m6">
                     <a href="active" href="#home">Home</a>
                 </div>
@@ -55,6 +56,23 @@
                 <div class="date">
                     <input placeholder="Click here to select a date" type="number" class="datepicker" id="zipBox" value="">
                 </div>
+
+                <!-- GOOGLE MAP -->
+
+                <div id="map"></div>
+                <script>
+                    var map;
+                    function initMap() {
+                        map = new google.maps.Map(document.getElementById('map'), {
+                            center: { lat: 41.96, lng: -87.65 },
+                            zoom: 9,
+                        });
+                    }
+                </script>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDufsMZdr-XbLgd_ewVqeV2FdwrfBLfzdI&callback=initMap" async
+                    defer></script>
+
+                <!-- ----------------------- -->
             </form>
 
         </div>

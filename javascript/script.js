@@ -1,5 +1,4 @@
 
-
 var eventfulURL = "http://api.eventful.com/json/events/search?...&location=Chicago"
 
 var eventfulCall =
