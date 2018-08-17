@@ -1,4 +1,5 @@
 
+
 var eventfulURL = "http://api.eventful.com/json/events/search?...&location=Chicago"
 
 var eventfulCall =
@@ -16,14 +17,18 @@ function isZip(zip) {
 
 
 
+
 $("#zipButton").on("click", function () {
     preventDefault();
     var zipCode = $("#zipBox").val();
-    if (isZip(zipCode)) {
+    if (/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zipCode)) {
         // Do search function
+        console.log("That is a valid Zip Code");
+
 
         console.log(eventfulCall);
     } else {
         console.log(eventfulCall);
+
     }
 });
