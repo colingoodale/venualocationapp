@@ -16,13 +16,20 @@ function isZip(zip) {
 
 
 
-$("#zipButton").on("click", function () {
+$("#submit").on("click", function () {
     var zipCode = $("#zipBox").val();
     if (isZip(zipCode)) {
         // Do search function
         console.log("That is a valid Zip Code");
+        card = $("<button>");
+        card.text("Hello!");
+        $("#cardContainer").append(card);
+
     }
 });
+// $("#submit").on("click", function () {
+
+// });
 
 $(document).ready(function () {
     $('.datepicker').datepicker()
