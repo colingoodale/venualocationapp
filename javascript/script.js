@@ -30,12 +30,12 @@ $(document).ready(function () {
     $('select').formSelect();
 });
 
-artist = 'Beyonce'
+artist = "Beyonce";
 
-$.ajax('https://api.bandsintown.com/' + artist + '/Roosevelt/events.json', {
+$.ajax('https://api.bandsintown.com/artists/' + artist + '/events.json', {
     data: {
         api_version: '2.0',
-        app_id: 'ENTER_APPID_HERE'
+        app_id: 'f073da9fd80bafdfb67ab82c022d6798'
     },
     dataType: 'jsonp',
     jsonpCallback: 'createConcertList',
@@ -64,6 +64,6 @@ window.createConcertList = function (res) {
         $table.append($tr)
     })
 
-    $container.append($table)
+    console.log($table)
 }
 
