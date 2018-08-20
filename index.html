@@ -24,7 +24,9 @@
         <div class="col s12 m4 l3">
             <div class="input-field">
                 <input id="search" type="search" required>
-                <label class="label-icon" for="search"><i class="material-icons">search artists here</i></label>
+                <label class="label-icon" for="search">
+                    <i class="material-icons">search artists here</i>
+                </label>
                 <i class="material-icons">close</i>
             </div>
 
@@ -129,12 +131,29 @@
             </div>
         </div>
 
-
+        <!-- JQuery -->
         <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
             crossorigin='anonymous'></script>
 
+        <!-- Materialize -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyCIFoovMAysSilzAgjpmcm0dKtFxhU6A2A",
+                authDomain: "chi-vents.firebaseapp.com",
+                databaseURL: "https://chi-vents.firebaseio.com",
+                projectId: "chi-vents",
+                storageBucket: "chi-vents.appspot.com",
+                messagingSenderId: "98220167997"
+            };
+            firebase.initializeApp(config);
+        </script>
+
+        <!-- Main Javascript -->
         <script src="javascript/script.js"></script>
 </body>
 
