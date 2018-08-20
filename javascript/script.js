@@ -14,14 +14,13 @@ function isZip(zip) {
 }
 
 
-
 $("#submit").on("click", function () {
     var zipCode = $("#zipBox").val();
     // alert("hello")
     if (isZip(zipCode)) {
         // Do search function
         console.log("That is a valid Zip Code");
-        var card = $("<div>").addClass("card blue-grey darken-1");
+        var card = $("<div>").addClass("card light-blue darken-3");
         var cardContent = $("<div>").addClass("card-content white-text");
         card.append(cardContent);
         $("#cardContainer").append(card);
