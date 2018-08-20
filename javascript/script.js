@@ -31,7 +31,7 @@ $("#submit1").on("click", function (event) {
     event.preventDefault();
     var artistName = $("#nameBox").val();
     console.log(artistName);
-    $.ajax('https://api.bandsintown.com/artists/' + artist + '/events.json', {
+    $.ajax('https://api.bandsintown.com/artists/' + artistName + '/events.json', {
         data: {
             api_version: '2.0',
             app_id: 'f073da9fd80bafdfb67ab82c022d6798'
@@ -52,21 +52,21 @@ $("#submit1").on("click", function (event) {
         var $table = $('<table class="list" />')
         $table.append('<tr><th></th><th>Date</th><th>Venue</th><th>Location</th></tr>')
 
-        $.each(concerts, function (index, concert) {
+        $.each(concerts, function (i, concert) {
             var date = concert.datetime.match(/(\d\d\d\d)-(\d\d)-(\d\d)/)
             var dateString = date[3] + '.' + date[2] + '.' + date[1]
             var card = $("<div>").addClass("card light-blue darken-3");
             var cardContent = $("<div>").addClass("card-content white-text");
-            var cardSpan = $("<span>").addClass("card-title white-text").text("Test");
+            var cardSpan = $("<span>").addClass("card-title white-text").text();
             var eventInfo = $("<p>").addClass("white-text").text("This is where the info description goes.");
             card.append(cardContent);
             card.append(cardSpan);
             card.append(eventInfo);
 
+            console.log(concerts[i].id);
+
             $("#cardContainer").append(card);
         })
-
-        console.log($container)
     }
 });
 
@@ -75,8 +75,6 @@ $(document).ready(function () {
     $('.datepicker').datepicker()
     $('select').formSelect();
 });
-
-artist = "Beyonce";
 
 
 
