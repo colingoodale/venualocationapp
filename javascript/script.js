@@ -27,12 +27,13 @@ $("#submit").on("click", function () {
         $("#cardContainer").append(card);
 
     } else {
-        alert("Go Fuck Yourself");
+        alert("Please enter a valid zip code.");
     }
 });
 
 
 $(document).ready(function () {
     $('.datepicker').datepicker()
+    $('select').formSelect();
 });
 
