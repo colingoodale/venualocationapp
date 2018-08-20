@@ -22,6 +22,7 @@
     <div class="row">
 
         <div class="col s12 m4 l3">
+
             <form action="#">
                 <div class="input-field col s12">
                     <select multiple>
@@ -47,8 +48,8 @@
 
                 </div>
                 <div class="artistName">
-                    <input placeholder="Enter Artist Name Here!" artistName="Artist Name" id="nameBox" type="text" class "validate">
-                    <button id="submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <input placeholder="Enter Artist Name Here!" artistName="Artist Name" id="nameBox" type="text" class="validate">
+                    <button id="submit1" class="btn waves-effect waves-light" type="submit" name="action">Submit
                 </div>
                 </button>
 
@@ -116,19 +117,35 @@
                 <div class="card-content white-text">
                     <span class="card-title">Card Title</span>
                     <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
-                        II require little markup to use effectively.</p>
                 </div>
                 <div class="card-action">
                 </div>
             </div>
         </div>
 
-
+        <!-- JQuery -->
         <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
             crossorigin='anonymous'></script>
 
+        <!-- Materialize -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyCIFoovMAysSilzAgjpmcm0dKtFxhU6A2A",
+                authDomain: "chi-vents.firebaseapp.com",
+                databaseURL: "https://chi-vents.firebaseio.com",
+                projectId: "chi-vents",
+                storageBucket: "chi-vents.appspot.com",
+                messagingSenderId: "98220167997"
+            };
+            firebase.initializeApp(config);
+        </script>
+
+        <!-- Main Javascript -->
         <script src="javascript/script.js"></script>
 </body>
 

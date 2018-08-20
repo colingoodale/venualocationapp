@@ -1,3 +1,5 @@
+var database = firebase.database();
+
 function isZip(zip) {
     return /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zip);
 }
@@ -22,6 +24,11 @@ $("#submit").on("click", function () {
     } else {
         alert("Please enter a valid zip code.");
     }
+});
+
+$("#submit1").on("click", function () {
+    var artistName = $("#nameBox").val();
+    console.log(artistName);
 });
 
 
