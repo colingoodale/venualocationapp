@@ -31,6 +31,43 @@ $("#submit1").on("click", function (event) {
     event.preventDefault();
     var artistName = $("#nameBox").val();
     console.log(artistName);
+    $.ajax('https://api.bandsintown.com/artists/' + artist + '/events.json', {
+        data: {
+            api_version: '2.0',
+            app_id: 'f073da9fd80bafdfb67ab82c022d6798'
+        },
+        dataType: 'jsonp',
+        jsonpCallback: 'createConcertList',
+        crossDomain: true
+    })
+
+    window.createConcertList = function (res) {
+        var concerts = res.sort(function (a, b) {
+            return new Date(b.datetime) - new Date(a.datetime)
+        })
+
+        var $container = $('.concerts-list')
+
+        $('<h4 class="title">All Concerts</h4>').appendTo($container)
+        var $table = $('<table class="list" />')
+        $table.append('<tr><th></th><th>Date</th><th>Venue</th><th>Location</th></tr>')
+
+        $.each(concerts, function (index, concert) {
+            var date = concert.datetime.match(/(\d\d\d\d)-(\d\d)-(\d\d)/)
+            var dateString = date[3] + '.' + date[2] + '.' + date[1]
+            var card = $("<div>").addClass("card light-blue darken-3");
+            var cardContent = $("<div>").addClass("card-content white-text");
+            var cardSpan = $("<span>").addClass("card-title white-text").text("Test");
+            var eventInfo = $("<p>").addClass("white-text").text("This is where the info description goes.");
+            card.append(cardContent);
+            card.append(cardSpan);
+            card.append(eventInfo);
+
+            $("#cardContainer").append(card);
+        })
+
+        console.log($container)
+    }
 });
 
 
@@ -41,38 +78,5 @@ $(document).ready(function () {
 
 artist = "Beyonce";
 
-$.ajax('https://api.bandsintown.com/artists/' + artist + '/events.json', {
-    data: {
-        api_version: '2.0',
-        app_id: 'f073da9fd80bafdfb67ab82c022d6798'
-    },
-    dataType: 'jsonp',
-    jsonpCallback: 'createConcertList',
-    crossDomain: true
-})
 
-window.createConcertList = function (res) {
-    var concerts = res.sort(function (a, b) {
-        return new Date(b.datetime) - new Date(a.datetime)
-    })
-
-    var $container = $('.concerts-list')
-
-    $('<h4 class="title">All Concerts</h4>').appendTo($container)
-    var $table = $('<table class="list" />')
-    $table.append('<tr><th></th><th>Date</th><th>Venue</th><th>Location</th></tr>')
-
-    $.each(concerts, function (index, concert) {
-        var date = concert.datetime.match(/(\d\d\d\d)-(\d\d)-(\d\d)/)
-        var dateString = date[3] + '.' + date[2] + '.' + date[1]
-        var $tr = $('<tr />')
-        $tr.append($('<td class="spacer" />'))
-        $tr.append($('<td class="date" />').text(dateString))
-        $tr.append($('<td class="venue" />').text(concert.venue.name))
-        $tr.append($('<td class="location" />').text(concert.venue.city + ', ' + concert.venue.country))
-        $table.append($tr)
-    })
-
-    console.log($container)
-}
 
