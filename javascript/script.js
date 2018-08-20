@@ -5,7 +5,8 @@ function isZip(zip) {
 }
 
 
-$("#submit").on("click", function () {
+$("#submit").on("click", function (event) {
+    event.preventDefault();
     var zipCode = $("#zipBox").val();
     // alert("hello")
     if (isZip(zipCode)) {
@@ -26,7 +27,8 @@ $("#submit").on("click", function () {
     }
 });
 
-$("#submit1").on("click", function () {
+$("#submit1").on("click", function (event) {
+    event.preventDefault();
     var artistName = $("#nameBox").val();
     console.log(artistName);
 });
