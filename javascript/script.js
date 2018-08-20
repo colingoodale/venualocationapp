@@ -24,6 +24,11 @@ $("#submit").on("click", function () {
     }
 });
 
+$("#submit1").on("click", function () {
+    var artistName = $("#nameBox").val();
+    console.log(artistName);
+});
+
 
 $(document).ready(function () {
     $('.datepicker').datepicker()
