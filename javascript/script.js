@@ -57,9 +57,11 @@ $("#submit1").on("click", function (event) {
             var dateString = date[3] + '.' + date[2] + '.' + date[1]
             var card = $("<div>").addClass("card light-blue darken-3");
             var cardContent = $("<div>").addClass("card-content white-text");
-            var cardSpan = $("<span>").addClass("card-title white-text").text();
-            var eventInfo = $("<p>").addClass("white-text").text("This is where the info description goes.");
+            var eventImage = $("<img width=100px height=100px>").attr("src", concerts[i].artists[0].image_url);
+            var cardSpan = $("<span>").addClass("card-title white-text").text(concerts[i].artists[0].name);
+            var eventInfo = $("<p>").addClass("white-text").text(concerts[i].description);
             card.append(cardContent);
+            card.append(eventImage);
             card.append(cardSpan);
             card.append(eventInfo);
 
