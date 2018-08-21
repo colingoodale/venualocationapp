@@ -111,6 +111,8 @@
 
         </div>
 
+
+
         <div id="cardContainer" class="col s8 m4 l6">
             <div class="card light-blue darken-3">
                 <div class="card-content white-text">
@@ -120,6 +122,23 @@
                 <div class="card-action">
                 </div>
             </div>
+        </div>
+
+        <div class="input-field col s8 m4 l3">
+            <select id="fireSelector">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="name">Mic Name</option>
+                <option value="locationName">Location Name</option>
+                <option value="day">Day of Week</option>
+                <option value="startTime">Start Time</option>
+            </select>
+            <label>Search By:</label>
+
+            <div class="fireSearch">
+                <input placeholder="Search for Keyword" id="fireBox" type="text" class="validate">
+                <button id="submit2" class="btn waves-effect waves-light" type="submit" name="action">Submit
+            </div>
+            </button>
         </div>
 
         <!-- JQuery -->
