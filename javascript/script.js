@@ -115,13 +115,12 @@ $("#submit1").on("click", function (event) {
             var cardSpan = $("<span>").addClass("card-title white-text").text(concerts[i].artists[0].name);
             var ticketAvailable = $("<p>").addClass("white-text").text(concerts[i].artists[0].ticket_status);
             var eventInfo = $("<p>").addClass("white-text").text(concerts[i].description);
+            eventLocation.append(" ", eventTime);
             card.append(cardContent);
+            card.prepend(cardSpan);
             card.append(eventImage);
             card.append(eventLocation);
-            card.append(" ");
-            card.append(eventTime);
-            card.append(ticketAvailable);
-            card.append(cardSpan);
+            card.append(ticketAvailable)
             card.append(eventInfo);
 
             console.log(concerts);
