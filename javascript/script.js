@@ -95,18 +95,18 @@ $("#submit1").on("click", function (event) {
             var eventLocation = $("<p>").addClass("white-text right").text(concerts[i].formatted_location);
             var eventTime = $("<p>").addClass("white-text right").text(concerts[i].formatted_datetime);
             var cardSpan = $("<span>").addClass("card-title white-text").text(concerts[i].artists[0].name);
-            var ticketButton = $("<button>").addClass("white-text").text("Availability");
-            var ticketAvailable = $("<p>").addClass("card-title white-text").text("Availability: " + concerts[i].ticket_status);
-            var ticketURL = $("<a>").attr("href", concerts[i].ticket_url);
+            var ticketButton = $("<button>").addClass("white-text");
+            var buttonAnchor = $("<a>").attr("href", concerts[i].ticket_url).attr("target", "_blank").text("Tickets");
+            var ticketAvailable = $("<p>").addClass("card-title white-text").text(concerts[i].ticket_status);
             var eventInfo = $("<p>").addClass("white-text").text(concerts[i].description);
             eventLocation.append(" ", eventTime);
-            ticketButton.append(ticketURL);
+            ticketButton.append(buttonAnchor);
             card.append(cardContent);
             card.prepend(cardSpan);
             card.append(eventImage);
-            card.append(ticketButton);
             card.append(eventLocation);
             card.append(ticketAvailable);
+            card.append(ticketButton);
             card.append(eventInfo);
 
             console.log(concerts);
