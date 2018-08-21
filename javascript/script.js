@@ -11,9 +11,9 @@ function fork() {
         console.log(snapshot.val());
         datacopy = snapshot.val();
 
-        for (var item in datacopy) {
-            console.log(datacopy[item].host);
-        }
+        // for (var item in datacopy) {
+        //     console.log(datacopy[item].host);
+        // }
     })
 
 }
@@ -60,6 +60,21 @@ $("#submit").on("click", function (event) {
     } else {
         alert("Please enter a valid zip code.");
     }
+});
+
+$("#submit2").on("click", function (event) {
+    event.preventDefault();
+    var searchTerm = $("#fireBox").val();
+    var searchSelector = $("#fireSelector").val();
+
+
+    for (var item in datacopy) {
+        if (datacopy[item][searchSelector].toLowerCase().includes(searchTerm.toLowerCase())) {
+            populateCard(datacopy[item].name);
+        }
+    }
+
+
 });
 
 $("#submit1").on("click", function (event) {
