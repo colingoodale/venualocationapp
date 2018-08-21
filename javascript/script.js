@@ -78,7 +78,9 @@ $("#submit2").on("click", function (event) {
 });
 
 $("#submit1").on("click", function (event) {
+    $("#cardContainer").empty();
     event.preventDefault();
+
     var artistName = $("#nameBox").val();
     console.log(artistName);
     $.ajax('https://api.bandsintown.com/artists/' + artistName + '/events.json', {
@@ -105,7 +107,7 @@ $("#submit1").on("click", function (event) {
         $.each(concerts, function (i, concert) {
             var date = concert.datetime.match(/(\d\d\d\d)-(\d\d)-(\d\d)/)
             var dateString = date[3] + '.' + date[2] + '.' + date[1]
-            var card = $("<div>").addClass("card light-blue darken-3");
+            var card = $("<div>").addClass("card light-blue darken-3 hoverable");
             var cardContent = $("<div>").addClass("card-content white-text");
             var eventImage = $("<img width=100px height=100px>").attr("src", concerts[i].artists[0].image_url);
             var cardSpan = $("<span>").addClass("card-title white-text").text(concerts[i].artists[0].name);
