@@ -10,70 +10,52 @@ function fork() {
     database.ref().on("value", function (snapshot) {
         console.log(snapshot.val());
         datacopy = snapshot.val();
-
-        // for (var item in datacopy) {
-        //     console.log(datacopy[item].host);
-        // }
     })
 
 }
 
-// database.ref(snapshot)
-// snapshot.val
-// for in 
-
 fork();
 
 function populateCard(information) {
-    console.log("That is a valid Zip Code");
     var card = $("<div>").addClass("card light-blue darken-3");
     var cardContent = $("<div>").addClass("card-content white-text");
-    var cardSpan = $("<span>").addClass("card-title white-text").text(information);
-    var eventInfo = $("<p>").addClass("white-text").text("This is where the info description goes.");
+    var cardSpan = $("<span>").addClass("card-title white-text").text(information.name);
+    //var cardSpan2 = $("<span>").addClass("card-title white-text").text("@ " + information.locationName);
+    var eventInfo = $("<div>").addClass("white-text").append(
+        `<p>Sign-up starts at ${information.signUpTime}</p>
+        <p>Show starts at ${information.startTime}</p>
+        <p>Every ${information.day} at ${information.locationName}</p>
+        <p>${information.address}</p>
+        `
+    );
+
     card.append(cardContent);
-    card.append(cardSpan);
-    card.append(eventInfo);
+    cardContent.append(cardSpan);
+    //cardContent.append(cardSpan2);
+    cardContent.append(eventInfo);
 
     $("#cardContainer").append(card);
 }
-
-$("#submit").on("click", function (event) {
-    event.preventDefault();
-    var zipCode = $("#zipBox").val();
-    // alert("hello")
-    if (isZip(zipCode)) {
-        // Do search function
-        // console.log("That is a valid Zip Code");
-        // var card = $("<div>").addClass("card light-blue darken-3");
-        // var cardContent = $("<div>").addClass("card-content white-text");
-        // var cardSpan = $("<span>").addClass("card-title white-text").text("Test");
-        // var eventInfo = $("<p>").addClass("white-text").text("This is where the info description goes.");
-        // card.append(cardContent);
-        // card.append(cardSpan);
-        // card.append(eventInfo);
-
-        // $("#cardContainer").append(card);
-        for (var item in datacopy) {
-            populateCard(datacopy[item].name);
-        }
-
-    } else {
-        alert("Please enter a valid zip code.");
-    }
-});
 
 $("#submit2").on("click", function (event) {
     event.preventDefault();
     var searchTerm = $("#fireBox").val();
     var searchSelector = $("#fireSelector").val();
 
-
-    for (var item in datacopy) {
-        if (datacopy[item][searchSelector].toLowerCase().includes(searchTerm.toLowerCase())) {
-            populateCard(datacopy[item].name);
+    if (searchTerm !== "") {
+        for (var item in datacopy) {
+            if (datacopy[item][searchSelector].toLowerCase().includes(searchTerm.toLowerCase())) {
+                populateCard(datacopy[item]);
+            }
         }
     }
-
+    else {
+        for (var item in datacopy) {
+            if (datacopy[item].day.toLowerCase().includes("monday")) {
+                populateCard(datacopy[item]);
+            }
+        }
+    }
 
 });
 
