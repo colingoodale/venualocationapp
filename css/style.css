@@ -17,3 +17,8 @@
 #map{
     height: 300px;
 }
+
+body {
+    background-image: url("https://talentexpoblog.files.wordpress.com/2010/05/002-talent-expo-general.jpg");
+    background-size: cover;
+}
