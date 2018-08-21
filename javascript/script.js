@@ -109,15 +109,22 @@ $("#submit1").on("click", function (event) {
             var dateString = date[3] + '.' + date[2] + '.' + date[1]
             var card = $("<div>").addClass("card light-blue darken-3 hoverable");
             var cardContent = $("<div>").addClass("card-content white-text");
-            var eventImage = $("<img width=100px height=100px>").attr("src", concerts[i].artists[0].image_url);
+            var eventImage = $("<img width=150px height=150px>").attr("src", concerts[i].artists[0].image_url);
+            var eventLocation = $("<p>").addClass("white-text right").text(concerts[i].formatted_location);
+            var eventTime = $("<p>").addClass("white-text right").text(concerts[i].formatted_datetime);
             var cardSpan = $("<span>").addClass("card-title white-text").text(concerts[i].artists[0].name);
+            var ticketAvailable = $("<p>").addClass("white-text").text(concerts[i].artists[0].ticket_status);
             var eventInfo = $("<p>").addClass("white-text").text(concerts[i].description);
             card.append(cardContent);
             card.append(eventImage);
+            card.append(eventLocation);
+            card.append(" ");
+            card.append(eventTime);
+            card.append(ticketAvailable);
             card.append(cardSpan);
             card.append(eventInfo);
 
-            console.log(concerts[i].id);
+            console.log(concerts);
 
             $("#cardContainer").append(card);
         })
