@@ -1,9 +1,41 @@
 var database = firebase.database();
+console.log(database.ref());
+var datacopy;
 
 function isZip(zip) {
     return /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zip);
 }
 
+function fork() {
+    database.ref().on("value", function (snapshot) {
+        console.log(snapshot.val());
+        datacopy = snapshot.val();
+
+        for (var item in datacopy) {
+            console.log(datacopy[item].host);
+        }
+    })
+
+}
+
+// database.ref(snapshot)
+// snapshot.val
+// for in 
+
+fork();
+
+function populateCard(information) {
+    console.log("That is a valid Zip Code");
+    var card = $("<div>").addClass("card light-blue darken-3");
+    var cardContent = $("<div>").addClass("card-content white-text");
+    var cardSpan = $("<span>").addClass("card-title white-text").text(information);
+    var eventInfo = $("<p>").addClass("white-text").text("This is where the info description goes.");
+    card.append(cardContent);
+    card.append(cardSpan);
+    card.append(eventInfo);
+
+    $("#cardContainer").append(card);
+}
 
 $("#submit").on("click", function (event) {
     event.preventDefault();
@@ -11,16 +43,19 @@ $("#submit").on("click", function (event) {
     // alert("hello")
     if (isZip(zipCode)) {
         // Do search function
-        console.log("That is a valid Zip Code");
-        var card = $("<div>").addClass("card light-blue darken-3");
-        var cardContent = $("<div>").addClass("card-content white-text");
-        var cardSpan = $("<span>").addClass("card-title white-text").text("Test");
-        var eventInfo = $("<p>").addClass("white-text").text("This is where the info description goes.");
-        card.append(cardContent);
-        card.append(cardSpan);
-        card.append(eventInfo);
+        // console.log("That is a valid Zip Code");
+        // var card = $("<div>").addClass("card light-blue darken-3");
+        // var cardContent = $("<div>").addClass("card-content white-text");
+        // var cardSpan = $("<span>").addClass("card-title white-text").text("Test");
+        // var eventInfo = $("<p>").addClass("white-text").text("This is where the info description goes.");
+        // card.append(cardContent);
+        // card.append(cardSpan);
+        // card.append(eventInfo);
 
-        $("#cardContainer").append(card);
+        // $("#cardContainer").append(card);
+        for (var item in datacopy) {
+            populateCard(datacopy[item].name);
+        }
 
     } else {
         alert("Please enter a valid zip code.");
