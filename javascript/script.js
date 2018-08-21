@@ -63,7 +63,9 @@ $("#submit").on("click", function (event) {
 });
 
 $("#submit1").on("click", function (event) {
+    $("#cardContainer").empty();
     event.preventDefault();
+
     var artistName = $("#nameBox").val();
     console.log(artistName);
     $.ajax('https://api.bandsintown.com/artists/' + artistName + '/events.json', {
