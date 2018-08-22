@@ -106,6 +106,7 @@ $("#submit2").on("click", function (event) {
                 var buttonAnchor = $("<a>").attr("href", concerts[i].ticket_url).attr("target", "_blank").text("Tickets");
                 var ticketAvailable = $("<p>").addClass("card-title white-text").text("Ticket Availability: " + concerts[i].ticket_status);
                 var eventInfo = $("<p>").addClass("white-text").text("Venue Info: " + concerts[i].description);
+                var venueName = $("<p>").addClass("white-text").text(concerts[i].venue.name);
                 eventLocation.append(" ", eventTime);
                 ticketButton.append(buttonAnchor);
                 cardSpan.append(eventLocation);
@@ -115,6 +116,7 @@ $("#submit2").on("click", function (event) {
                 //card.append(eventLocation);
                 card.append(ticketAvailable);
                 card.append(ticketButton);
+                card.append(venueName);
                 card.append(eventInfo);
 
                 console.log(concerts);
