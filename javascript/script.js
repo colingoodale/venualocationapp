@@ -1,3 +1,13 @@
+var url = "http://api.openweathermap.org/data/2.5/weather?q=60601,us&APPID=02d2f765636f52e60b1ca124cabb9386&units=imperial"
+$.ajax({
+    method: "GET",
+    url: url,
+}).then(function (mapData) {
+    console.log(mapData.main.temp);
+    $(".right").append(" Current Temp: " + mapData.main.temp + "ºF");
+});
+
+
 var database = firebase.database();
 console.log(database.ref());
 var datacopy;
