@@ -111,10 +111,11 @@ $("#submit1").on("click", function (event) {
             var eventInfo = $("<p>").addClass("white-text").text(concerts[i].description);
             eventLocation.append(" ", eventTime);
             ticketButton.append(buttonAnchor);
+            cardSpan.append(eventLocation);
             card.append(cardContent);
             card.prepend(cardSpan);
             card.append(eventImage);
-            card.append(eventLocation);
+            //card.append(eventLocation);
             card.append(ticketAvailable);
             card.append(ticketButton);
             card.append(eventInfo);
