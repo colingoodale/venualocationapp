@@ -1,3 +1,13 @@
+var url = "http://api.openweathermap.org/data/2.5/weather?q=60601,us&APPID=02d2f765636f52e60b1ca124cabb9386&units=imperial"
+$.ajax({
+    method: "GET",
+    url: url,
+}).then(function (mapData) {
+    console.log(mapData.main.temp);
+    $(".right").append(" Current Temp: " + mapData.main.temp + "ºF");
+});
+
+
 var database = firebase.database();
 console.log(database.ref());
 var datacopy;
@@ -86,22 +96,23 @@ $("#submit2").on("click", function (event) {
             $.each(concerts, function (i, concert) {
                 var date = concert.datetime.match(/(\d\d\d\d)-(\d\d)-(\d\d)/)
                 var dateString = date[3] + '.' + date[2] + '.' + date[1]
-                var card = $("<div>").addClass("card light-blue darken-3 hoverable");
+                var card = $("<div>").addClass("card light-blue darken-5 hoverable");
                 var cardContent = $("<div>").addClass("card-content white-text");
-                var eventImage = $("<img width=150px height=150px>").attr("src", concerts[i].artists[0].image_url);
-                var eventLocation = $("<p>").addClass("white-text right").text(concerts[i].formatted_location);
-                var eventTime = $("<p>").addClass("white-text right").text(concerts[i].formatted_datetime);
+                var eventImage = $("<img height=100px width=100px>").addClass("responsive-image").attr("src", concerts[i].artists[0].image_url);
+                var eventLocation = $("<p>").addClass("white-text").text(concerts[i].formatted_location);
+                var eventTime = $("<p>").addClass("white-text").text(concerts[i].formatted_datetime);
                 var cardSpan = $("<span>").addClass("card-title white-text").text(concerts[i].artists[0].name);
                 var ticketButton = $("<button>").addClass("white-text");
                 var buttonAnchor = $("<a>").attr("href", concerts[i].ticket_url).attr("target", "_blank").text("Tickets");
-                var ticketAvailable = $("<p>").addClass("card-title white-text").text(concerts[i].ticket_status);
-                var eventInfo = $("<p>").addClass("white-text").text(concerts[i].description);
+                var ticketAvailable = $("<p>").addClass("card-title white-text").text("Ticket Availability: " + concerts[i].ticket_status);
+                var eventInfo = $("<p>").addClass("white-text").text("Venue Info: " + concerts[i].description);
                 eventLocation.append(" ", eventTime);
                 ticketButton.append(buttonAnchor);
+                cardSpan.append(eventLocation);
                 card.append(cardContent);
                 card.prepend(cardSpan);
                 card.append(eventImage);
-                card.append(eventLocation);
+                //card.append(eventLocation);
                 card.append(ticketAvailable);
                 card.append(ticketButton);
                 card.append(eventInfo);
